@@ -16,20 +16,25 @@
         <th>ÜRÜN KATEGORİSİ</th>
         <th>FİYAT</th>
         <th>STOK ADEDİ</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
     </tr>
     <tbody>
         @foreach (var urun in Model)
         {
-            <tr>
-                <th>@urun.URUNID</th>
-                <td>@urun.URUNAD</td>
-                <td>@urun.MARKA</td>
-                <td>@urun.URUNKATEGORI</td>
-                <td>@urun.FIYAT</td>
-                <td>@urun.STOK</td>
+        <tr>
+            <th>@urun.URUNID</th>
+            <td>@urun.URUNAD</td>
+            <td>@urun.MARKA</td>
+            <td>@urun.URUNKATEGORI</td>
+            <td>@urun.FIYAT</td>
+            <td>@urun.STOK</td>
+            <td><a href="~/URUN/SIL/@urun.URUNID" class="btn btn-danger">SİL</a></td>
+            <td><a href="~/URUN/GUNCELLE/@urun.URUNID" class="btn btn-success">GÜNCELLE</a></td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
+<a href="/URUN/YENIURUN/" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
 
