@@ -1,10 +1,28 @@
-﻿
+﻿@using MvcStok.Models.Entity
+@model List<TBLKATEGORILER>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     // Burası Kategori Listeleme Sayfası
 }
 
-<h2>Selam. Burası kategorilerin listeleneceği kısım.</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ İD</th>
+        <th>KATEGORİ ADI</th>
+    </tr>
+    <tbody>
+        @foreach (var kategori in Model)
+        {
+            <tr>
+                <th>@kategori.KATEGORIID</th> <!--İlk sıraya id gelsin-->
+                <td>@kategori.KATEGORIAD</td><!-- İkinci sıraya ad gelsin (table data)-->
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 
 
