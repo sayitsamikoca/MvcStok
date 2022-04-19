@@ -16,5 +16,20 @@ namespace MvcStok.Controllers
             var urunler = dbStokEntities.TBLURUNLER.ToList();
             return View(urunler);
         }
+
+        [HttpGet]
+        public ActionResult UrunEkle()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult UrunEkle(TBLURUNLER urun)
+        {
+            dbStokEntities.TBLURUNLER.Add(urun);
+            dbStokEntities.SaveChanges();
+            return View();
+        }
     }
 }
