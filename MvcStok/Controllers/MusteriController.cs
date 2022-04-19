@@ -16,5 +16,19 @@ namespace MvcStok.Controllers
             var musteriler = dbStokEntities.TBLMUSTERILER.ToList();
             return View(musteriler);
         }
+
+        [HttpGet]
+        public ActionResult YeniMusteri()
+        {
+            return View();
+        } 
+
+        [HttpPost]
+        public ActionResult YeniMusteri(TBLMUSTERILER musteri)
+        {
+            dbStokEntities.TBLMUSTERILER.Add(musteri);
+            dbStokEntities.SaveChanges(); // Değişiklikleri Kayıt Et.
+            return View();
+        }
     }
 }
