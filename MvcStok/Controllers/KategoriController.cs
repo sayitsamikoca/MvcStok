@@ -18,5 +18,22 @@ namespace MvcStok.Controllers
             return View(kategoriler); // bana kategorileri döndür.
             
         }
+
+
+        [HttpGet] // eğerki sayfa ilk yükleniyorsa, bir işlem yoksa sadece view'i geri döndür
+        public ActionResult YeniKategori()
+        {
+            return View();
+        }
+
+
+        [HttpPost] // sayfaya herhangi bir post işlemi yapıldığı zaman:
+        public ActionResult YeniKategori(TBLKATEGORILER p1)
+        {
+            dbStokEntities.TBLKATEGORILER.Add(p1);
+            dbStokEntities.SaveChanges(); // Değişiklikleri Kayıt et.
+            return View();
+        }
+
     }
 }

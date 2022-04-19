@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!-- Bu form bir post işlemi olduğunda çalışacak(method="post") -->
+<form class="form-group" method="post">
+    <div>
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="KATEGORIAD" /> <!--name= db ismiyle aynı olmalı. -->
+    </div>
+    <div style="margin-top:12px; ">
+        <button class="btn btn-info">Kategori Ekle</button>
+    </div>
+</form>
+
