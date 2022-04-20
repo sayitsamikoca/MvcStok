@@ -48,8 +48,8 @@ namespace MvcStok.Controllers
 
         public ActionResult UrunSil(int id)
         {
-            var kategori = dbStokEntities.TBLURUNLER.Find(id);
-            dbStokEntities.TBLURUNLER.Remove(kategori);
+            var urun = dbStokEntities.TBLURUNLER.Find(id);
+            dbStokEntities.TBLURUNLER.Remove(urun);
             dbStokEntities.SaveChanges();
 
             return RedirectToAction("Index");
