@@ -28,7 +28,7 @@ namespace MvcStok.Controllers
                                                  Value = i.KATEGORIID.ToString()
                                              }).ToList();
 
-            ViewBag.dgr = dbStokEntities; // Controller tarafındaki ifadeyi diğer tarafa taşıyacağız - nesne türetip orada kullanacağız.
+            ViewBag.dgr = degerler; // Controller tarafındaki ifadeyi diğer tarafa taşıyacağız - nesne türetip orada kullanacağız.
 
             return View();
         }
@@ -36,10 +36,14 @@ namespace MvcStok.Controllers
 
         [HttpPost]
         public ActionResult UrunEkle(TBLURUNLER urun)
-        {
+        {   // firstOrDefault : Seçmiş Olduğum İlk Değeri getir.
+            var kategori = dbStokEntities.TBLKATEGORILER.Where(m=> m.KATEGORIID == urun.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            
+            urun.TBLKATEGORILER = kategori;
+
             dbStokEntities.TBLURUNLER.Add(urun);
             dbStokEntities.SaveChanges();
-            return View();
+            return RedirectToAction("Index"); // Kayıt etme işi tamamlanınca Index sayfasına geri döndür
         }
     }
 }
