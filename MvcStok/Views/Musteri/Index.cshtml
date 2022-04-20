@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 
-    // Müşteri Listeleme
+    // Müşteri Listeleme - Müşteri İle İlgili Alan
 }
 
 
@@ -27,7 +27,7 @@
                 <th>@musteri.MUSTERIID</th>
                 <td>@musteri.MUSTERIAD</td>
                 <td>@musteri.MUSTERISOYAD</td>
-                <td><a href="~/MUSTERI/SIL/@musteri.MUSTERIID" class="btn btn-danger">SİL</a></td>
+                <td><a href="~/MUSTERI/MusteriSil/@musteri.MUSTERIID" class="btn btn-danger">SİL</a></td>
                 <td><a href="~/MUSTERI/GUNCELLE/@musteri.MUSTERIID" class="btn btn-success">GÜNCELLE</a></td>
             </tr>
         }

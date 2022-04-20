@@ -30,5 +30,15 @@ namespace MvcStok.Controllers
             dbStokEntities.SaveChanges(); // Değişiklikleri Kayıt Et.
             return View();
         }
+
+        public ActionResult MusteriSil(int id)
+        {
+            var musteri = dbStokEntities.TBLMUSTERILER.Find(id);
+            dbStokEntities.TBLMUSTERILER.Remove(musteri);
+
+            dbStokEntities.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
