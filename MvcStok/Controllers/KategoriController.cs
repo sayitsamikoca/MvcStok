@@ -43,5 +43,14 @@ namespace MvcStok.Controllers
 
             return RedirectToAction("Index"); // İşlem bitince Index'e geri döndür.
         }
+
+        public ActionResult KategoriGuncelle(int id)
+        {
+            var kategori = dbStokEntities.TBLKATEGORILER.Find(id);
+            return View("KategoriGuncelle", kategori);
+
+
+        }
+
     }
 }
