@@ -45,5 +45,14 @@ namespace MvcStok.Controllers
             dbStokEntities.SaveChanges();
             return RedirectToAction("Index"); // Kayıt etme işi tamamlanınca Index sayfasına geri döndür
         }
+
+        public ActionResult UrunSil(int id)
+        {
+            var kategori = dbStokEntities.TBLURUNLER.Find(id);
+            dbStokEntities.TBLURUNLER.Remove(kategori);
+            dbStokEntities.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
