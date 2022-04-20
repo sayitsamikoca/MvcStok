@@ -35,5 +35,13 @@ namespace MvcStok.Controllers
             return View();
         }
 
+        public ActionResult KategoriSil(int id)
+        {
+            var kategori = dbStokEntities.TBLKATEGORILER.Find(id);
+            dbStokEntities.TBLKATEGORILER.Remove(kategori);
+            dbStokEntities.SaveChanges();
+
+            return RedirectToAction("Index"); // İşlem bitince Index'e geri döndür.
+        }
     }
 }
