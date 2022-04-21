@@ -40,5 +40,20 @@ namespace MvcStok.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult MusteriGetir(int id)
+        {
+            var musteri = dbStokEntities.TBLMUSTERILER.Find(id);
+            return View("MusteriGetir", musteri);
+        }
+
+        public ActionResult Guncelle(TBLMUSTERILER item)
+        {
+            var musteri = dbStokEntities.TBLMUSTERILER.Find(item.MUSTERIID); // MUTERIID'ye göre bul
+            musteri.MUSTERIAD = item.MUSTERIAD; // item'dan gelen müşteri adı, musteri.MUSTERİAD'a ata.
+            musteri.MUSTERISOYAD = item.MUSTERISOYAD;
+            dbStokEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
