@@ -50,5 +50,13 @@ namespace MvcStok.Controllers
             return View("KategoriGetir", kategori);
 
         }
+
+        public ActionResult Guncelle(TBLKATEGORILER item)
+        {
+            var kategori = dbStokEntities.TBLKATEGORILER.Find(item.KATEGORIID);
+            kategori.KATEGORIAD = item.KATEGORIAD;
+            dbStokEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
