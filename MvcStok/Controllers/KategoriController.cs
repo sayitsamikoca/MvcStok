@@ -30,6 +30,14 @@ namespace MvcStok.Controllers
         [HttpPost] // sayfaya herhangi bir post işlemi yapıldığı zaman:
         public ActionResult YeniKategori(TBLKATEGORILER p1)
         {
+            if (!ModelState.IsValid)
+            {
+                // Modelin durumunda doğrulama işlemi yapılmadıysa içeriye gir:
+
+                return View("YeniKategori"); // Aynız sayfayı döndür, zaten hata mesajı gözükecek döndüğünde:)
+
+            }
+
             dbStokEntities.TBLKATEGORILER.Add(p1);
             dbStokEntities.SaveChanges(); // Değişiklikleri Kayıt et.
             return View();

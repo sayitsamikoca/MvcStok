@@ -1,4 +1,5 @@
-﻿
+﻿@model MvcStok.Models.Entity.TBLKATEGORILER
+
 @{
     ViewBag.Title = "YeniKategori";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -7,10 +8,19 @@
 
 <!-- Bu form bir post işlemi olduğunda çalışacak(method="post") -->
 <form class="form-group" method="post">
+    <!--<div> [1. BİÇİM]
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="KATEGORIAD" />-->
+    <!--name= db ismiyle aynı olmalı. -->
+    <!--</div>-->
+
     <div>
         <label>Kategori Adı</label>
-        <input type="text" class="form-control" name="KATEGORIAD" /> <!--name= db ismiyle aynı olmalı. -->
+        @Html.TextBoxFor(m => m.KATEGORIAD, new{@class="form-control"})
+        @Html.ValidationMessageFor(m => m.KATEGORIAD, "" , new {@style=" color:red; "}) <!-- Kullanıcıya hata mesajını verdim. Sıra Controller tarafında-->
     </div>
+
+
     <div style="margin-top:12px; ">
         <button class="btn btn-info">Kategori Ekle</button>
     </div>
