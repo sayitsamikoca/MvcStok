@@ -26,6 +26,12 @@ namespace MvcStok.Controllers
         [HttpPost]
         public ActionResult YeniMusteri(TBLMUSTERILER musteri)
         {
+            if (!ModelState.IsValid)
+            {
+
+                return View("YeniMusteri"); 
+
+            }
             dbStokEntities.TBLMUSTERILER.Add(musteri);
             dbStokEntities.SaveChanges(); // Değişiklikleri Kayıt Et.
             return View();
