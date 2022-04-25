@@ -38,7 +38,6 @@ namespace MvcStok.Controllers
         public ActionResult UrunEkle(TBLURUNLER urun)
         {   // firstOrDefault : Seçmiş Olduğum İlk Değeri getir.
             var kategori = dbStokEntities.TBLKATEGORILER.Where(m=> m.KATEGORIID == urun.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
-            
             urun.TBLKATEGORILER = kategori;
 
             dbStokEntities.TBLURUNLER.Add(urun);
@@ -70,7 +69,21 @@ namespace MvcStok.Controllers
 
 
             return View("UrunGetir", urun);  //ÜrünGetir'i döndür, bunun içinde|beraberinde değeri urun olacak.
+        }
 
+        public ActionResult Guncelle(TBLURUNLER item)
+        {
+            var urun = dbStokEntities.TBLURUNLER.Find(item.URUNID);
+            urun.URUNAD = item.URUNAD;
+            urun.MARKA = item.MARKA;
+            urun.STOK = item.STOK;
+            urun.FIYAT = item.FIYAT;
+            // urun.KATEGORI = item.URUNKATEGORI
+            var kategori = dbStokEntities.TBLKATEGORILER.Where(m => m.KATEGORIID == item.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = kategori.KATEGORIID;
+
+            dbStokEntities.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
