@@ -54,5 +54,12 @@ namespace MvcStok.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult UrunGetir(int id) // Ürün Bilgilerini Taşıma.
+        {
+            var urun = dbStokEntities.TBLURUNLER.Find(id);
+            return View("UrunGetir", urun);  //ÜrünGetir'i döndür, bunun içinde|beraberinde değeri urun olacak.
+
+        }
     }
 }
