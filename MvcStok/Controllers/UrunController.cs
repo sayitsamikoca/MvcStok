@@ -58,6 +58,17 @@ namespace MvcStok.Controllers
         public ActionResult UrunGetir(int id) // Ürün Bilgilerini Taşıma.
         {
             var urun = dbStokEntities.TBLURUNLER.Find(id);
+
+            List<SelectListItem> degerler = (from i in dbStokEntities.TBLKATEGORILER.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.KATEGORIAD,
+                                                 Value = i.KATEGORIID.ToString()
+                                             }).ToList();
+
+            ViewBag.dgr = degerler; // Controller tarafındaki ifadeyi diğer tarafa taşıyacağız - nesne türetip orada kullanacağız.
+
+
             return View("UrunGetir", urun);  //ÜrünGetir'i döndür, bunun içinde|beraberinde değeri urun olacak.
 
         }
