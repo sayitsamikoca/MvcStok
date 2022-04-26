@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcStok.Models.Entity.TBLSATISLAR
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -17,30 +17,30 @@
             <div class="modal-header">
                 <h2 class="modal-title">Satış Yapma Ekranı</h2>
             </div>
-            <form>
+            <form method="post" action="/Satis/YeniSatis"> <!--SatisController(Sati) içinde bulunan bu actionResult(YeniSatis) -->
                 <div class="modal-body">
 
                     <label>Ürün Adı</label>
-                    <input type="text" name="Urun" class="form-control" />
-
-                    <br />
-
-                    <label>Ürün Markası</label>
-                    <input type="text" name="marka" class="form-control" />
+                    @Html.TextBoxFor(m => m.URUN, new { @class = "form-control" })
 
                     <br />
 
                     <label>Müşteri Adı Soyadı</label>
-                    <input type="text" name="musteri" class="form-control" />
+                    @Html.TextBoxFor(m => m.MUSTERI, new { @class = "form-control" })
 
                     <br />
 
-                    <label>Müşteri elefonu</label>
-                    <input type="text" name="telefon" class="form-control" />
-                    
+                    <label>Adet</label>
+                    @Html.TextBoxFor(m => m.ADET, new { @class = "form-control" })
+
+                    <br />
+
+                    <label>Fiyat</label>
+                    @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+
                     </br>
-                    
-                    <button class="btn btn-info"> Verileri Kaydet</button>
+
+                    <button class="btn btn-info">Satış İşlemini Yap!</button>
                 </div>
             </form>
         </div>
