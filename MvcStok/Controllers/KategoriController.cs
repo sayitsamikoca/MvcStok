@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList; // paging işlemleri için framework tanımladım an .Mvc
+using PagedList.Mvc;
 using System.Web.Mvc;
 using MvcStok.Models.Entity; // Models altındaki entity klasörüne ulaşbilmek için, kütüphane olarak tanımladım.
 
@@ -11,10 +13,11 @@ namespace MvcStok.Controllers
     {
         // GET: Kategori
         MvcDbStokEntities dbStokEntities = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var kategoriler = dbStokEntities.TBLKATEGORILER.ToList(); // Kategoriler listesindeki değerleri listele
+            // var kategoriler = dbStokEntities.TBLKATEGORILER.ToList(); // Kategoriler listesindeki değerleri listele
 
+            var kategoriler = dbStokEntities.TBLKATEGORILER.ToList().ToPagedList(page, 4); // page 1'den başla ve her sayfada 4 tane göster.
             return View(kategoriler); // bana kategorileri döndür.
             
         }
