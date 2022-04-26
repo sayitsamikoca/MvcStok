@@ -17,6 +17,7 @@
         <th>MÜŞTERİ SOYADI</th>
         <th>SİL</th>
         <th>GÜNCELLE</th>
+        <th>ALERT</th>
 
 
     </tr>
@@ -29,6 +30,7 @@
                 <td>@musteri.MUSTERISOYAD</td>
                 <td><a href="~/MUSTERI/MusteriSil/@musteri.MUSTERIID" class="btn btn-danger">SİL</a></td>
                 <td><a href="~/MUSTERI/MusteriGetir/@musteri.MUSTERIID" class="btn btn-success">GÜNCELLE</a></td>
+                <td>@Html.ActionLink("DELETE BUTTON", "MusteriSil", new { id = musteri.MUSTERIID }, new { @class = "btn btn-warning", onclick = " return confirm('Gerçekten Silmek İstiyor Musunuz?')" }) </td>
             </tr>
         }
     </tbody>
