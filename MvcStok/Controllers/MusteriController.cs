@@ -11,10 +11,21 @@ namespace MvcStok.Controllers
     {
         // GET: Musteri
         MvcDbStokEntities dbStokEntities = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var musteriler = dbStokEntities.TBLMUSTERILER.ToList();
-            return View(musteriler);
+            var degerler = from d in dbStokEntities.TBLMUSTERILER select d; //LINQ sorgusu : degerler: d Musteriler içinde bul ve d'ye at
+            if (!string.IsNullOrEmpty(p)) // eğerki p değeri null değilse
+            {
+                degerler = degerler.Where (m => m.MUSTERIAD.Contains (p)); // musteriadi icinde paremetreye eşit olan değerleri getir
+            } 
+
+            return View(degerler.ToList()); // değerleri liste halinde döndür.
+
+
+            // var musteriler = dbStokEntities.TBLMUSTERILER.ToList();
+            // return View(musteriler);
+
+
         }
 
         [HttpGet]
