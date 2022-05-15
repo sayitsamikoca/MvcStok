@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
+<!--Satış Yap Page Kısmı-->
 
 
 <!-- Popup Modal Alanı -->
@@ -17,7 +17,7 @@
             <div class="modal-header">
                 <h2 class="modal-title">Satış Yapma Ekranı</h2>
             </div>
-            <form method="post" action="/Satis/YeniSatis"> <!--SatisController(Sati) içinde bulunan bu actionResult(YeniSatis) -->
+            <form method="post" action="/Satis/YeniSatis"> <!--SatisController(Satis) içinde bulunan bu actionResult(YeniSatis) -->
                 <div class="modal-body">
 
                     <label>Ürün Adı</label>
@@ -40,7 +40,8 @@
 
                     </br>
 
-                    <button class="btn btn-info">Satış İşlemini Yap!</button>
+                    <button type="submit" class="btn btn-info">Satış İşlemini Yap!</button>  <!--submit: kabul butonu-->
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button><!--data dismiss: modal'dan vazgeç-iptal et anlamında -->
                 </div>
             </form>
         </div>
